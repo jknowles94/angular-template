@@ -1,0 +1,117 @@
+// ----- Basic styles -----
+// Small devices (landscape phones, less than 768px)
+@include media-breakpoint-down(sm) { 
+	html {
+		font-size: 10px;
+	}
+}
+
+// Medium devices (tablets, 768px and up)
+@include media-breakpoint-up(md) { 
+	html {
+		font-size: 12px;
+	}
+
+}
+
+// Text styles
+body {
+	font-family: $font-regular;
+	@include rem(font-size, 14px);
+	color: $color-grey-dark;
+	background: #fff;
+}
+
+
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 { 	
+	@include rem(margin-top, 10px);
+	@include rem(margin-bottom, 15px);
+
+	small, .small { }
+} 
+
+h1, .h1, h2, .h2 { 
+
+}
+
+h3, .h3, h3, .h3, h4, .h4, h5, .h5 { 
+	@include rem(margin-bottom, 10px);
+}
+
+h1, .h1 { @include rem(font-size, 36px); }
+h2, .h2 { @include rem(font-size, 30px); }
+h3, .h3 { @include rem(font-size, 24px); } 
+h4, .h4 { @include rem(font-size, 18px); }
+h5, .h5 { @include rem(font-size, 12px); }
+
+.text-lg { @include rem(font-size, 24px); } 
+.text-md { @include rem(font-size, 18px); }
+.text-sm { @include rem(font-size, 12px); }
+
+// Medium devices (tablets, 768px and up)
+@include media-breakpoint-up(md) { 
+
+	h1, .h1 { @include rem(font-size, 46px); }
+	h2, .h2 { @include rem(font-size, 36px); }
+	h3, .h3 { @include rem(font-size, 30px); } 
+	h4, .h4 { @include rem(font-size, 24px); }
+	h5, .h5 { @include rem(font-size, 18px); }
+
+	.text-lg { @include rem(font-size, 30px); } 
+	.text-md { @include rem(font-size, 24px); }
+	.text-sm { @include rem(font-size, 12px); }
+
+}
+
+
+p, ul, ol { @include rem(margin, 0 0 20px 0); }
+ul, ol {
+	@include rem(padding, 0 0 0 25px);
+
+	li { @include rem(padding, 0 0 0 5px); }
+	ul, ol { margin-bottom: 0; }
+}
+
+ul, ol, ul li, ol li {
+
+}
+
+
+// Links and Nav
+a { 
+	color: #000; 
+	text-decoration: none; 
+	transition: color 300ms;
+
+	&:hover, &:focus { 
+		color: $color-grey-dark;
+		text-decoration: none; 
+	}
+}
+
+nav, nav ul, nav li, nav a { float: left; margin: 0; padding: 0; }
+nav ul { list-style: none; list-style-image: none; }
+	nav li { }
+		nav a { }
+
+.nav-inline {
+	display: inline-block;
+	float: none;
+
+	ul, li, a { 
+		display: inline-block;
+		float: none;
+	}
+}
+
+
+// Image groups
+.img-group {
+	img {
+		margin-bottom: 30px;
+	}
+	img:last-child {
+		margin-bottom: 0;
+	}
+}
+
