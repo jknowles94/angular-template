@@ -6,16 +6,16 @@
 	clear: both;
 }
 .fullwidth-lg {
-	padding-top: 45px;
-	padding-bottom: 45px;
+	padding-top: $spacing-lg;
+	padding-bottom: $spacing-lg;
 }
 .fullwidth {
-	padding-top: 30px;
-	padding-bottom: 30px;
+	padding-top: $spacing-default;
+	padding-bottom: $spacing-default;
 }
 .fullwidth-sm {
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding-top: $spacing-small;
+	padding-bottom: $spacing-small;
 }
 .fullwidth-bg, .fullwidth-np {
 	padding-top: 0;
@@ -32,8 +32,8 @@
 	padding-right: 0;
 }
 .col-lp {
-	padding-left: 30px;
-	padding-right: 30px;
+	padding-left: $spacing-default;
+	padding-right: $spacing-default;
 }
 
 .img-responsive {
@@ -69,7 +69,7 @@
 .panel-outro { @include rem(margin-top, 45px); }
 
 .text-block {
-	padding: 15px;
+	padding: $spacing-small;
 	background-color: #fff;
 }
 
