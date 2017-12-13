@@ -7,11 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="* * 'self' default-src 'unsafe-inline' 'unsafe-eval' http://* https://* data: cdvfile://* content://*;">
+    <!-- inject:js -->
+    <!-- endinject -->
     <!-- inject:css -->
     <!-- endinject -->
   </head>
-  <body>
-    <h1>APP WORKING!</h1>
+  <body ng-app="angularTemplate">
+    <h1>TEST</h1>
+    <div ui-view></div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
     if (window.cordova !== undefined) {
@@ -32,7 +35,5 @@
       window.ga("create", "UA-93765724-2", "auto");
     }
     </script>
-    <!-- inject:js -->
-    <!-- endinject -->
   </body>
 </html>

@@ -1,8 +1,11 @@
 {
   "esversion": 6,
   "strict": false,
+  "browser": true,
   "node": true,
   "globals": {
-    "angular": false
+    "angular": false,
+    "window": false,
+    "$": false
   }
 }

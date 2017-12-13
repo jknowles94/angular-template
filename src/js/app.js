@@ -18,7 +18,6 @@ angular
     "ngSanitize",
     "ui.router"
   ])
-  .config(function() {
-
-
+  .config(() => {
+    
   });
