@@ -2,7 +2,10 @@
 @import "mixins";
 @import "variables";
 
+@import "bower_components/bootstrap/scss/bootstrap-reboot.scss";
 @import "bower_components/bootstrap/scss/bootstrap-grid.scss";
+@import "bower_components/bootstrap/scss/mixins";
+@import "bower_components/bootstrap/scss/utilities";
 
 // Site styles
 @import "base";
