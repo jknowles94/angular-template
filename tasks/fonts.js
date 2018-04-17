@@ -13,23 +13,41 @@ const vendorFonts = () => {
   return gulp.src(bowerFiles(config.selectors.fonts));
 };
 
-const cleanFonts = () => {
-  return gulp.src(config.dest.fonts, { read: false })
+const cleanFonts = (target) => {
+  var dest = config.dest.fonts;
+
+  if(target == "mobile"){
+    dest = config.dest.mobileFonts;
+  }
+  if(target == "mobileStaging"){
+    dest = config.dest.mobileStagingFonts;
+  }
+
+  return gulp.src(dest, { read: false })
     .pipe(clean());
 };
 
-const copyFonts = () => {
+const copyFonts = (target) => {
+  var dest = config.dest.fonts;
+
+  if(target == "mobile"){
+    dest = config.dest.mobileFonts;
+  }
+  if(target == "mobileStaging"){
+    dest = config.dest.mobileStagingFonts;
+  }
+
   return eventStream.merge(
     localFonts(),
     vendorFonts()
   )
-  .pipe(gulp.dest(config.dest.fonts));
+  .pipe(gulp.dest(dest));
 };
 
-const buildFonts = () => {
+const buildFonts = (target) => {
   return eventStream.merge(
-    cleanFonts(),
-    copyFonts()
+    cleanFonts(target),
+    copyFonts(target)
   )
   .pipe(browserSync.stream());
 };

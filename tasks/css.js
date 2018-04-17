@@ -26,7 +26,15 @@ const fetchLocalCss = () => {
     .pipe(concat(config.output.css));
 };
 
-const buildCss = () => {
+const buildCss = (target) => {
+  var dest = config.dest.css;
+
+  if(target == "mobile"){
+    dest = config.dest.mobileCss;
+  }
+  if(target == "mobileStaging"){
+    dest = config.dest.mobileStagingCss;
+  }
   return eventStream.merge(
     fetchVendorCss(),
     fetchLocalCss()
@@ -37,7 +45,7 @@ const buildCss = () => {
   .pipe(gulpIf(global.production, minifycss()))
   .pipe(gulpIf(global.production, rename({ suffix: '.min' })))
   .pipe(sourcemaps.write())
-  .pipe(gulp.dest(config.dest.css))
+  .pipe(gulp.dest(dest))
   .pipe(gulpIf(!global.production, browserSync.stream()));
 };
 

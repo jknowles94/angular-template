@@ -5,25 +5,43 @@ const imagemin         = require('gulp-imagemin');
 const browserSync      = require('browser-sync');
 const config           = require('../package').gulp;
 
-const cleanImages = () => {
-  return gulp.src(config.dest.images, { read: false })
+const cleanImages = (target) => {
+  var dest = config.dest.images;
+
+  if(target == "mobile"){
+    dest = config.dest.mobileImages;
+  }
+  if(target == "mobileStaging"){
+    dest = config.dest.mobileStagingImages;
+  }
+
+  return gulp.src(dest, { read: false })
     .pipe(clean());
 };
 
-const copyImages = () => {
+const copyImages = (target) => {
+  var dest = config.dest.images;
+
+  if(target == "mobile"){
+    dest = config.dest.mobileImages;
+  }
+  if(target == "mobileStaging"){
+    dest = config.dest.mobileStagingImages;
+  }
+
   return gulp.src(`${config.src.images}${config.selectors.images}`)
     .pipe(imagemin({
       optimizationLevel: 3,
       progressive: true,
       interlaced: true
     }))
-    .pipe(gulp.dest(config.dest.images));
+    .pipe(gulp.dest(dest));
 };
 
-const buildImages = () => {
+const buildImages = (target) => {
   return eventStream.merge(
-    cleanImages(),
-    copyImages()
+    cleanImages(target),
+    copyImages(target)
   )
   .pipe(browserSync.stream());
 };

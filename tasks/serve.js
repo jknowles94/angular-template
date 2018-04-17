@@ -9,6 +9,7 @@ const serve = () => {
   browserSync.init(null, {
     proxy: 'http://localhost:4000',
     files: ['public/**/*.*'],
+    // browser: 'mozilla firefox',
     browser: 'google chrome',
     port: 7000,
     reloadDelay: 1000

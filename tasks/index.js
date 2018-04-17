@@ -12,17 +12,27 @@ const validateIndex = () => {
   .pipe(htmlhint.reporter('htmlhint-stylish'));
 };
 
-const buildIndex = () => {
-  const js  = require('./js')();
-  const css = require('./css')();
+const buildIndex = (target) => {
+  // this will require js.js and run buildJs
+  const js  = require('./js')(target);
+  // this will require js.js and run buildCss
+  const css = require('./css')(target);
+  var dest = config.destDir;
+
+  if(target == "mobile"){
+    dest = config.mobileDir;
+  }
+  if(target == "mobileStaging"){
+    dest = config.mobileStagingDir;
+  }
 
   return validateIndex()
     // write first to get relative path for inject
-    .pipe(gulp.dest(config.destDir))
-    .pipe(inject(js, {relative: true, addRootSlash: true}))
-    .pipe(inject(css, {relative: true, addRootSlash: true}))
+    .pipe(gulp.dest(dest))
+    .pipe(inject(js, {relative: true, addRootSlash: false}))
+    .pipe(inject(css, {relative: true, addRootSlash: false}))
     .pipe(gulpIf(global.production, htmlmin({collapseWhitespace: true, removeComments: true})))
-    .pipe(gulp.dest(config.destDir))
+    .pipe(gulp.dest(dest))
     .pipe(gulpIf(!global.production, browserSync.stream()));
 };
 

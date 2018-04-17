@@ -32,7 +32,16 @@ const fetchLocalJs = () => {
     }));
 };
 
-const buildJs = () => {
+const buildJs = (target) => {
+  var dest = config.dest.js;
+
+  if(target == "mobile"){
+    dest = config.dest.mobileJs;
+  }
+  if(target == "mobileStaging"){
+    dest = config.dest.mobileStagingJs;
+  }
+
   return eventStream.merge(
     fetchVendorJs(),
     fetchLocalJs()
@@ -44,7 +53,7 @@ const buildJs = () => {
   .pipe(gulpIf(global.production, uglify()))
   .pipe(gulpIf(global.production, rename({ suffix: '.min' })))
   // .pipe(sourcemaps.write())
-  .pipe(gulp.dest(config.dest.js))
+  .pipe(gulp.dest(dest))
   .pipe(gulpIf(!global.production, browserSync.stream()));
 };
 

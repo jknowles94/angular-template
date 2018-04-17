@@ -11,10 +11,19 @@ const validatePartials = () => {
   .pipe(htmlhint.reporter('htmlhint-stylish'));
 };
 
-const buildPartials = () => {
+const buildPartials = (target) => {
+  var dest = config.dest.js;
+
+  if(target == "mobile"){
+    dest = config.dest.mobileJs;
+  }
+  if(target == "mobileStaging"){
+    dest = config.dest.mobileStagingJs;
+  }
+
   return validatePartials()
     .pipe(gulpIf(global.production, htmlmin({collapseWhitespace: true, removeComments: true})))
-    .pipe(gulp.dest(config.dest.js))
+    .pipe(gulp.dest(dest))
     .pipe(gulpIf(!global.production, browserSync.stream()));
 };
 
