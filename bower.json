@@ -28,7 +28,7 @@
     "angular-ui-router": "latest",
     "angular-ui-select": "latest",
     "angular-validation-match": "latest",
-    "bootstrap": "v4.0.0-beta",
+    "bootstrap": "v4.0.0-beta"
   },
   "resolutions": {
     "angular": "~1.6.x"
