@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node index",
-    "heroku-postbuild": "bower install && gulp build-app"
+    "heroku-postbuild": "bower install --force && gulp build-app"
   },
   "author": "Alex Chin <alex@alexchin.co.uk>",
   "license": "ISC",
