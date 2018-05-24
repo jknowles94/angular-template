@@ -28,7 +28,8 @@ const fetchLocalJs = () => {
   return validateLocalJs()
     .pipe(order([config.main.js,config.selectors.js]))
     .pipe(babel({
-      presets: ['es2015']
+      presets: ['es2015'],
+      plugins: ['transform-object-rest-spread']
     }));
 };
 
